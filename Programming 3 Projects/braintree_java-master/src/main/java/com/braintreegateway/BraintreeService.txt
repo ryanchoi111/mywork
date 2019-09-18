@@ -1,0 +1,29 @@
+package com.braintreegateway;
+
+
+import java.math.BigDecimal;
+
+public class BraintreeService {
+    private final static BraintreeGateway gateway = new BraintreeGateway(
+            Environment.SANDBOX,
+            "merchantkey",
+            "public key",
+            "private key"
+            );
+
+
+    private listingRepository listings;
+    public String getClientToken(){
+        return gateway.clientToken().generate();
+    }
+    public void saveNonce(long listingId, String nonce){
+        Listing l = listings.findOne(listingId);
+        l.setNonce(nonce);
+        listings.save(l);
+    }
+    public void pay(BigDecimal amount, String nonce){
+        TransactionRequest requestT = new TransactionRequest().amount(amount).paymentMethodNonce(nonce).options().submitForSettlement(true).done();
+    }
+
+
+}

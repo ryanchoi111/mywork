@@ -1,0 +1,10 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 4.6.6
+ */
+
+// Database 'PetBnB'
+
+// PetBnB.Messages
+
+[{"id":"1","first_name":"Bob","last_name":"Law","date":"2017-10-23"}, {"id":"2","first_name":"Larry","last_name":"Smith","date":"2017-10-23"}, {"id":"3","first_name":"Tanay","last_name":"Srivastava","date":"2017-10-23"}, {"id":"4","first_name":"Ryan","last_name":"Choi","date":"2017-10-23"}, {"id":"5","first_name":"Truman","last_name":"Marshall","date":"2017-10-23"}]

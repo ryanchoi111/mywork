@@ -1,0 +1,55 @@
+package com.mycompany.petbnb;
+
+import com.pubnub.api.Callback;
+import com.pubnub.api.PubnubError;
+import com.pubnub.api.PubnubException;
+
+public class Pubnub {
+    Pubnub pubnub = new Pubnub();
+
+
+
+
+
+        pubnub.subscribe("my_channel", new Callback() {
+
+                    @Override
+                    public void connectCallback(String channel, Object message) {
+                        System.out.println("SUBSCRIBE : CONNECT on channel:" + channel
+                                + " : " + message.getClass() + " : "
+                                + message.toString());
+                    }
+
+                    @Override
+                    public void disconnectCallback(String channel, Object message) {
+                        System.out.println("SUBSCRIBE : DISCONNECT on channel:" + channel
+                                + " : " + message.getClass() + " : "
+                                + message.toString());
+                    }
+
+                    public void reconnectCallback(String channel, Object message) {
+                        System.out.println("SUBSCRIBE : RECONNECT on channel:" + channel
+                                + " : " + message.getClass() + " : "
+                                + message.toString());
+                    }
+
+                    @Override
+                    public void successCallback(String channel, Object message) {
+                        System.out.println("SUBSCRIBE : " + channel + " : "
+                                + message.getClass() + " : " + message.toString());
+                    }
+
+                    @Override
+                    public void errorCallback(String channel, PubnubError error) {
+                        System.out.println("SUBSCRIBE : ERROR on channel " + channel
+                                + " : " + error.toString());
+                    }
+                }
+        );
+
+
+    private void subscribe(String my_channel, Callback callback) {
+    }
+
+
+}

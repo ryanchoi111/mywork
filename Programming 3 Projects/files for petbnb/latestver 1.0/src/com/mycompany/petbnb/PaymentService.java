@@ -1,0 +1,57 @@
+package com.mycompany.petbnb;
+
+
+import com.codename1.braintree.Purchase;
+import com.codename1.components.ToastBar;
+import com.codename1.io.Log;
+import com.codename1.io.rest.Response;
+import com.codename1.io.rest.Rest;
+import com.codename1.util.Callback;
+
+
+public class PaymentService implements Purchase.Callback{
+    private String listingId;
+
+
+    private PaymentService(String listingId){
+        this.listingId = listingId;
+    }
+
+    public static void sendPaymentAuthorization(String payId){
+        Purchase.startOrder(new PaymentService(payId));
+    }
+
+    @Override
+    public String fetchToken() {
+        return Rest.get("SERVER_URL" + "pay/token").acceptJson().getAsString().getResponseData();
+    }
+
+    @Override
+    public void onPurchaseSuccess(String nonce) {
+        Log.p("Payment succeeded we got a nonce: " + nonce);
+        Rest.get("SERVER_URL" + "pay/token").acceptJson().queryParam("listing", listingId).queryParam("nonce", nonce).getAsStringAsync(new Callback<Response<String>>() {
+            @Override
+            public void onError(Object sender, Throwable err, int errorCode, String errorMessage) {
+                Log.p("Payment server error!");
+                ToastBar.showErrorMessage("There was an error processing your payment: " + errorMessage);
+            }
+
+            @Override
+            public void onSucess(Response<String> value) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onPurchaseFail(String errorMessage) {
+        Log.p("Payment Failed!");
+        ToastBar.showErrorMessage("There was an error processing your payment: " + errorMessage);
+    }
+
+    @Override
+    public void onPurchaseCancel() {
+        Log.p("Purchase Canceled");
+    }
+}

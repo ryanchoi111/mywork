@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="PokeDeck">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PokeDeck/JavaSE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PokeDeck/CodeNameOneBuildClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

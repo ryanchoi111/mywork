@@ -1,0 +1,6 @@
+{
+    "name": "acme/hello-world",
+    "require": {
+        "monolog/monolog": "1.0.*"
+    }
+}

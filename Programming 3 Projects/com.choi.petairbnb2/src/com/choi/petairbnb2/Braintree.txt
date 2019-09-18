@@ -1,0 +1,44 @@
+
+package com.choi.petairbnb2;
+
+import com.codename1.braintree.com.choi.petairbnb2.Purchase;
+import com.codename1.processing.Result;
+
+
+public class Braintree {
+
+    private static BraintreeGateway gateway = new BraintreeGateway(
+            Environment.SANDBOX,
+            "kppxf9cxfkbb8m3k",
+            "cwwyrnpr32qrtc9j",
+            "8b9a4f871f16ced903cdfea1ca574120"
+    );
+
+
+
+
+    com.choi.petairbnb2.Purchase.startOrder(new com.choi.petairbnb2.Purchase.Callback() {
+        public String fetchToken() {
+            return;
+            // this method needs to return the token from the Brain tree server API.
+            // You need to use this code to connect to your server or return the data
+            // from a previous connection that fetched the token
+        }
+
+        public void onPurchaseSuccess(String nonce) {
+            // this is a callback that will be invoked when the purchase succeeds
+        }
+
+        public void onPurchaseFail(String errorMessage) {
+            // this is a callback that will be invoked when the purchase fails
+        }
+
+        public void onPurchaseCancel() {
+            // this is a callback that will be invoked when the purchase is canceled
+        }
+    });
+    
+}
+
+
+
