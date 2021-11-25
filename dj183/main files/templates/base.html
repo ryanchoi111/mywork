@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+html, body {
+      background: linear-gradient(to bottom, #faaca8, #BA55D3);
+      background-position:center top;
+      background-size:cover;
+      font-family: cursive;
+      min-height: 100%;
+}
+.img-left {
+    display: block;
+    float: left;
+    width: 15%;
+}
+.img-right {
+    display: block;
+    float: left;
+    width: 15%;
+}
+.not-visible {
+    visibility: hidden;
+}
+.glow {
+    text-align: center;
+    display: block;
+    float: left;
+    width: 70%;
+    font-size: 95px;
+    color: #BA55D3;
+    height: 100px;
+
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+
+</style>
+{% block head %}
+<title>Team Endl DJ183</title>
+{% endblock %}
+ </head>
+
+<body>
+<div class="center">
+    <img src="http://bestanimations.com/Computers/Discs/cd-animated-gif-11.gif"  class="img-left" height = 180px width=180px/>
+</div>
+<div id="header">
+   <h1 class="glow">DJ-183 </h1>
+   <img src="https://66.media.tumblr.com/3599ccb6b2d743d07e1bd2f58fc75206/tumblr_oc16918mcX1vx777ao1_540.gifv" class="img-right" height = 180px width=180px/>
+   <p class="not-visible">Credits </p>
+</div>
+  <div style="text-align:center">
+    <br>
+    <h2>Choose a genre and try to guess the correct song! </h2>
+  </div>
+<div id="content">{% block content %}{% endblock %}</div>
+
+</body>
+</html>

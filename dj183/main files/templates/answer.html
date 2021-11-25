@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<center>
+
+<form id="main_page" action="{{ url_for('score') }}" method="POST" enctype="multipart/form-data">
+<html lang="en">
+<head>
+  <style>
+  .button {
+    background-color: #BA55D3;
+    border: 2px solid white;
+    border-color: white;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 2px;
+    cursor: pointer;
+    font-family: Perpetua;
+  }
+  body {
+      min-height: 100%;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+  }
+  p[name = "score"] {
+      margin-bottom: 5px;
+  }
+
+  </style>
+</head>
+    <meta charset="UTF-8">
+    <div>
+      <form action = "" method = "POST" size = 4>
+      {% if song_bool%}
+        <h1>Correct!</h1>
+        <font size = "5" >
+        <p>The answer is <strong>{{answerS}} by {{answerA}}</strong></p>
+        <body>
+            <a href="{{url_for('question')}}">Next Question</a>
+            <br>
+            <a href="{{url_for('index')}}">Change genre</a>
+            <p name = "score"> Current score: {{current_score}} </p>
+            <iframe width="560" height="315" src="{{embed_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>
+            <div>
+                <button class="button" type="button" onclick= "window.location.href = '{{url_for('score')}}';">Clear Score</button>
+                <button class="button" type="button" onclick= "window.location.href = '{{url_for('leaderboard')}}';">View/Upload Scores</button>
+            </div>
+            <br><br>
+      </body>
+      {% else %}
+        <h1>Incorrect :(</h1>
+        <font size = "5" >
+        <p>The answer is <strong>{{answerS}} by {{answerA}}</strong></p>
+        <a href="{{url_for('question')}}">Try again?</a>
+        <br>
+        <a href="{{url_for('index')}}">Change genre</a>
+        <p name = "score"> Current score: {{current_score}} </p>
+         <iframe width="560" height="315" src="{{embed_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        <div>
+          <button class="button" type="button" onclick= "window.location.href = '{{url_for('score')}}';">Clear Score</button>
+          <button class="button" type="button" onclick= "window.location.href = '{{url_for('leaderboard')}}';">View/Upload Scores</button>
+        </div>
+        <br><br>
+      {% endif %}
+
+    </form>
+    </div>
+</html>
+</form>
+</center>
+{% endblock %}

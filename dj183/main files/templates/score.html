@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .button {
+       background-color: #BA55D3;
+       border: 2px solid white;
+       border-color: white;
+       color: white;
+       padding: 10px 30px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 16px;
+       margin: 3px 2px;
+       cursor: pointer;
+       font-family: Perpetua;
+     }
+     .answerbtn {
+       background-color: #BA55D3;
+       border-color: white;
+       color: white;
+       border: 2px solid white;
+       cursor: pointer;
+       padding: 10px 30px;
+       font-size: 16px;
+       margin: 3px 2px;
+       font-family: Perpetua;
+   }
+   body {
+       min-height: 100%;
+       margin: 0;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+   }
+  </style>
+</head>
+      <meta charset="UTF-8">
+      <center>
+      <h2>Would you like to clear your score?</h2>
+      </center>
+
+      <div>
+        <center>
+        <form action="" method = "POST" size = 2 >
+            <input type="radio" name = "answer" value = "yes"><font size="5">Yes</font><br>
+            <input type="radio" name = "answer" value = "no" ><font size="5">No</font><br>
+            </center>
+            </div><br>
+
+                <div>
+                  <center>
+                      <button class="answerbtn">Submit</button>
+
+                    </center>
+                </div>
+                <center>
+                <font size = "5.2"  >
+                <p> Current score: {{current_score}} </p>
+                </center>
+                <div>
+                  <center>
+                    <button class="button" type="button" onclick= "window.location.href = '{{url_for('score')}}';">Clear Score</button>
+                    <button class="button" type="button" onclick= "window.location.href = '{{url_for('leaderboard')}}';">View/Upload Score</button>
+                    <!-- "window.location.href = '{{url_for('score')}}';" -->
+                    </center>
+                </div>
+
+</html>
+{% endblock %}
